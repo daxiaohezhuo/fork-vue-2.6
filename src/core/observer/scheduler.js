@@ -127,11 +127,16 @@ function flushSchedulerQueue () {
   }
 }
 
+/**
+ * 执行updated钩子函数
+ * @param queue
+ */
 function callUpdatedHooks (queue) {
   let i = queue.length
   while (i--) {
     const watcher = queue[i]
     const vm = watcher.vm
+    // 只有满足当前 watcher 为 vm._watcher 以及组件已经 mounted 和 组件未销毁这三个条件，才会执行 updated 钩子函数
     if (vm._watcher === watcher && vm._isMounted && !vm._isDestroyed) {
       callHook(vm, 'updated')
     }

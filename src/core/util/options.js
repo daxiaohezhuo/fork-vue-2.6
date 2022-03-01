@@ -142,6 +142,7 @@ strats.data = function (
 
 /**
  * Hooks and props are merged as arrays.
+ * 合并生命周期函数
  */
 function mergeHook (
   parentVal: ?Array<Function>,
@@ -149,7 +150,7 @@ function mergeHook (
 ): ?Array<Function> {
   const res = childVal
     ? parentVal
-      ? parentVal.concat(childVal)
+      ? parentVal.concat(childVal)  // 一旦 parent 和 child 都定义了相同的钩子函数，那么它们会把 2 个钩子函数合并成一个数组
       : Array.isArray(childVal)
         ? childVal
         : [childVal]
@@ -169,6 +170,8 @@ function dedupeHooks (hooks) {
   return res
 }
 
+// 配置生命周期钩子合并策略
+// LIFECYCLE_HOOKS 定义在 src/shared/constants.js
 LIFECYCLE_HOOKS.forEach(hook => {
   strats[hook] = mergeHook
 })
@@ -260,6 +263,7 @@ strats.provide = mergeDataOrFn
 
 /**
  * Default strategy.
+ * 默认合并属性策略
  */
 const defaultStrat = function (parentVal: any, childVal: any): any {
   return childVal === undefined
@@ -384,6 +388,11 @@ function assertObjectType (name: string, value: any, vm: ?Component) {
 /**
  * Merge two option objects into a new one.
  * Core utility used in both instantiation and inheritance.
+ * mergeOptions 函数主要功能就是把 parent 和 child 这两个对象根据一些合并策略，合并成一个新对象并返回
+ * @param parent
+ * @param child
+ * @param vm
+ * @returns {{}}
  */
 export function mergeOptions (
   parent: Object,
@@ -407,6 +416,7 @@ export function mergeOptions (
   // the result of another mergeOptions call.
   // Only merged options has the _base property.
   if (!child._base) {
+    // 先递归把 extends 和 mixins 合并到 parent 上
     if (child.extends) {
       parent = mergeOptions(parent, child.extends, vm)
     }
@@ -419,10 +429,14 @@ export function mergeOptions (
 
   const options = {}
   let key
+  // 遍历parent
   for (key in parent) {
     mergeField(key)
   }
+
+  // 遍历child
   for (key in child) {
+    // 如果 key 不在 parent 的自身属性上，则调用 mergeField
     if (!hasOwn(parent, key)) {
       mergeField(key)
     }

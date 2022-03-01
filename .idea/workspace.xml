@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88ce2ed8-f014-457f-af04-af54b7d7844d" name="Default Changelist" comment="" />
+    <list default="true" id="88ce2ed8-f014-457f-af04-af54b7d7844d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/global-api/extend.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/global-api/extend.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/global-api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/global-api/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/instance/init.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/instance/init.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/instance/lifecycle.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/instance/lifecycle.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/instance/render.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/instance/render.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/observer/scheduler.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/observer/scheduler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/observer/watcher.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/observer/watcher.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/util/options.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/util/options.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/vdom/create-component.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/vdom/create-component.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/vdom/create-element.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/vdom/create-element.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/core/vdom/patch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/core/vdom/patch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/platforms/web/runtime/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/platforms/web/runtime/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/platforms/web/runtime/patch.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/platforms/web/runtime/patch.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,7 +53,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/new-workspace/workspace/czhan/trunk/wap_h5_V2/trunk" />
+    <property name="last_opened_file_path" value="D:/new-workspace/workspace/czhan/branches/wap_h5/WebContent/www/activity" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -57,7 +74,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1646016703179</updated>
-      <workItem from="1646016707877" duration="12228000" />
+      <workItem from="1646016707877" duration="15200000" />
+      <workItem from="1646097091442" duration="21231000" />
     </task>
     <servers />
   </component>
@@ -86,5 +104,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

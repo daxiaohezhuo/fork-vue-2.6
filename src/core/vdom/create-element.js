@@ -159,6 +159,7 @@ export function _createElement (
   } else {
     // direct component options / constructor
     // 如果是 tag 一个 Component 类型，直接创建一个组件类型的 VNode 节点
+    // createComponent 方法定义在 src/core/vdom/create-component.js
     vnode = createComponent(tag, data, context, children)
   }
 

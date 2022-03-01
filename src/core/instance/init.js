@@ -34,15 +34,17 @@ export function initMixin (Vue: Class<Component>) {
     // a flag to avoid this being observed
     vm._isVue = true
     // merge options
-    // 合并配置，即合并options
+    // 组件Vue实例初始化入口
     if (options && options._isComponent) {
       // optimize internal component instantiation
       // since dynamic options merging is pretty slow, and none of the
       // internal component options needs special treatment.
       initInternalComponent(vm, options)
     } else {
+      // 合并配置，即合并options
+      // mergeOptions 定义在 src/core/util/options.js
       vm.$options = mergeOptions(
-        resolveConstructorOptions(vm.constructor),
+        resolveConstructorOptions(vm.constructor),  // 返回的是vm.constructor.options，即Vue.options
         options || {},
         vm
       )
@@ -61,12 +63,18 @@ export function initMixin (Vue: Class<Component>) {
     initLifecycle(vm)   // 初始化生命周期
     initEvents(vm)      // 初始化实践中心
     initRender(vm)      // 初始化渲染
-    callHook(vm, 'beforeCreate')  // 执行beforeCreate钩子函数
+
+    // 执行beforeCreate钩子函数
+    // beforeCreate 钩子函数中不能获取到 props、data 中定义的值，也不能调用 methods 中定义的函数
+    callHook(vm, 'beforeCreate')
 
     initInjections(vm) // 在初始化data/props之前，初始化Vue实例的inject
-    initState(vm)   // 初始化data, props
+    initState(vm)   // 初始化 props、data、methods、watch、computed 等属性
     initProvide(vm) // 初始化provide
-    callHook(vm, 'created') // 执行created钩子函数
+
+    // 执行created钩子函数
+    // 如果是需要访问 props、data 等数据的话，就需要使用 created 钩子函数
+    callHook(vm, 'created')
 
     /* istanbul ignore if */
     if (process.env.NODE_ENV !== 'production' && config.performance && mark) {
@@ -75,15 +83,22 @@ export function initMixin (Vue: Class<Component>) {
       measure(`vue ${vm._name} init`, startTag, endTag)
     }
 
+    // 组件初始化是没有el属性的，因此组件自己接管了$mount的过程，即在componentVNodeHooks的init钩子函数里进行了$mount
     if (vm.$options.el) {
       vm.$mount(vm.$options.el)
     }
   }
 }
 
+/**
+ * 初始化组件vm
+ * @param vm
+ * @param options
+ */
 export function initInternalComponent (vm: Component, options: InternalComponentOptions) {
   const opts = vm.$options = Object.create(vm.constructor.options)
   // doing this because it's faster than dynamic enumeration.
+  // 这些属性是通过 createComponentInstanceForVnode 函数传入的几个参数合并到内部的选项 $options 里的
   const parentVnode = options._parentVnode
   opts.parent = options.parent
   opts._parentVnode = parentVnode
